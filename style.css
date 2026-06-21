@@ -9,7 +9,8 @@
 
 /* --- BASE STYLES --- */
 body {
-    background-color: #121212; /* Warna dasar hitam jika gambar belum dimuat */
+    /* Mengubah dari #121212 menjadi warna abu-abu gelap senada dengan background logo */
+    background-color: #1a1a1a; 
     color: #e0e0e0;
     line-height: 1.6;
     position: relative;

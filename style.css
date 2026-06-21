@@ -8,22 +8,24 @@
 }
 
 body {
-    /* 1. Pastikan nama file di bawah ini sesuai dengan nama foto logo Pagar Nusa di foldermu (misal: 'pagarnusa.jpeg') */
+    /* 1. Pastikan nama file ini sesuai dengan yang ada di foldermu */
     background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('PNLOSS.jpg');
     
-    /* 2. Mengunci posisi background agar tidak ikut bergeser saat di-scroll */
-    background-attachment: fixed;
-    
-    /* 3. Pengaturan agar gambar pas di layar HP dan PC */
+    /* 2. Pengaturan agar gambar pas dan memenuhi seluruh layar */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
     color: #e0e0e0;
     line-height: 1.6;
-    
-    /* 4. Menambahkan efek blur halus pada seluruh background */
-    filter: none; 
+}
+
+/* --- TRICK KHUSUS: Efek Fixed Hanya Berjalan di PC/Laptop --- */
+@media (min-width: 769px) {
+    body {
+        /* Efek mengunci background hanya aktif saat layar di atas 768px (PC) */
+        background-attachment: fixed;
+    }
 }
 
 /* --- EFEK BLUR KHUSUS SECTIONS --- */

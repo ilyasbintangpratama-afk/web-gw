@@ -378,7 +378,7 @@ p {
 .particle {
     position: absolute;
     aspect-ratio: 1 / 1; /* Memastikan rasionya selalu kotak 1:1 */
-    background-image: url('pagarnusa.jpeg'); /* Samakan dengan nama file logo Pagar Nusa milikmu */
+    background-image: url('PNLOSS.jpg'); /* Samakan dengan nama file logo Pagar Nusa milikmu */
     background-size: cover;
     background-position: center;
     border-radius: 8px; /* Sudut agak melengkung biar estetik */

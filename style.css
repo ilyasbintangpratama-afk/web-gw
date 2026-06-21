@@ -1,0 +1,295 @@
+/* --- RESET & BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION BAR (TASKBAR) --- */
+header {
+    background-color: rgba(18, 18, 18, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #25D366; /* Garis bawah taskbar berubah jadi hijau */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    color: #25D366; /* Logo "MyPortfolio" berubah jadi hijau */
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.nav-links li a {
+    color: #aaaaaa;
+    text-decoration: none;
+    padding: 8px 13px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links li a:hover {
+    color: #25D366; /* Tulisan menu (Home, Tentang, dll) berubah hijau saat disentuh kursor */
+    background-color: #1a1a1a;
+    border-radius: 5px;
+}
+
+/* --- EFEK TULISAN WARNA-WARNI BERGERAK --- */
+.nama-warni {
+    background: linear-gradient(45deg, #ff007f, #00ffff, #ff00ff, #00ffaa);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animasiWarna 4s ease infinite;
+    font-weight: bold;
+}
+
+@keyframes animasiWarna {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- LAYOUT SATU HALAMAN FULL (SECTIONS) --- */
+section {
+    padding: 120px 20px 80px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content-box {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+h2 {
+    color: #00adb5;
+    margin: 20px 0 10px 0;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #b0b0b0;
+}
+
+/* --- SOSIAL MEDIA & KONTAK --- */
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-sosmed {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-sosmed:hover {
+    transform: translateY(-5px);
+}
+
+.btn-wa { 
+    background-color: #25D366; 
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+.btn-ig { 
+    background-color: #E1306C; 
+    box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+}
+.btn-sosmed i { margin-right: 10px; font-size: 20px; }
+
+/* --- GRID & CARDS --- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 25px;
+    border-top: 4px solid #00adb5;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    color: #e0e0e0;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #aaaaaa;
+}
+
+/* --- GALERI (DEFAULT 3 KOLOM) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 1px solid #2a2a2a;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- RESPONSIVE UNTUK LAYAR HP (DIBAWAH 768px) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+
+    .nav-links li a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    section {
+        padding: 140px 15px 60px 15px;
+        min-height: auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-sosmed {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   ANIMASI BARU (FADE IN UP & SMOOTH GLOW)
+   ========================================================================== */
+
+/* 1. Aturan Dasar Animasi */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 2. State ketika Animasi Aktif */
+.fade-in-element.muncul {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Efek Menyala Hijau (Glow) pada Card saat Di-hover */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-8px) !important;
+    border-top-color: #25D366 !important; /* Otomatis berubah hijau pas di-hover */
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2) !important; /* Efek neon hijau */
+}
+
+/* 4. Efek Zoom Halus pada Foto Galeri saat Di-hover */
+.gallery-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2) !important;
+}

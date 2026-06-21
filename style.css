@@ -9,7 +9,7 @@
 
 body {
     /* 1. Lapisan hitam transparan agar tulisan portofolio tetap menyala terang */
-    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('pagarnusa.jpeg');
+    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('PNLOSS.jpg');
     
     /* 2. Mengunci posisi gambar agar tidak ikut bergeser saat web di-scroll */
     background-attachment: fixed;

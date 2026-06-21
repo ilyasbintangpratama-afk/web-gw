@@ -8,13 +8,16 @@
 }
 
 body {
-    /* 1. Pastikan nama file ini sesuai dengan yang ada di foldermu */
-    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('PNLOSS.jpg');
+    /* 1. Lapisan hitam transparan agar tulisan portofolio tetap menyala terang */
+    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('pagarnusa.jpeg');
     
-    /* 2. Pengaturan agar gambar pas dan memenuhi seluruh layar */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* 2. Mengunci posisi gambar agar tidak ikut bergeser saat web di-scroll */
+    background-attachment: fixed;
+    
+    /* 3. SETINGAN BARU AGAR FOTO TAMPIL 1:1 PAS DI TENGAH */
+    background-size: contain;      /* Mengubah dari 'cover' ke 'contain' agar foto utuh tidak terpotong */
+    background-position: center;   /* Memastikan logo berada tepat di tengah-tengah layar HP & PC */
+    background-repeat: no-repeat;  /* Mencegah gambar menduplikat/mengulang jika layar terlalu besar */
     
     color: #e0e0e0;
     line-height: 1.6;

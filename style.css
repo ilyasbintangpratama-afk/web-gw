@@ -9,7 +9,7 @@
 
 /* --- BASE STYLES --- */
 body {
-    background-color: #121212; /* Warna dasar hitam jika gambar belum dimuat */
+    background-color: #e0e0e0; /* Warna dasar hitam jika gambar belum dimuat */
     color: #e0e0e0;
     line-height: 1.6;
     position: relative;
@@ -70,7 +70,7 @@ section {
 
 /* --- NAVIGATION BAR (TASKBAR) --- */
 header {
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: #25D366;
     position: fixed;
     width: 100%;
     top: 0;

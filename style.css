@@ -7,20 +7,40 @@
     scroll-behavior: smooth;
 }
 
+/* --- BASE STYLES --- */
 body {
-    /* 1. Lapisan hitam transparan agar tulisan portofolio tetap menyala terang */
-    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('PNLOSS.jpg');
-    
-    /* 2. Mengunci posisi gambar agar tidak ikut bergeser saat web di-scroll */
-    background-attachment: fixed;
-    
-    /* 3. SETINGAN BARU AGAR FOTO TAMPIL 1:1 PAS DI TENGAH */
-    background-size: contain;      /* Mengubah dari 'cover' ke 'contain' agar foto utuh tidak terpotong */
-    background-position: center;   /* Memastikan logo berada tepat di tengah-tengah layar HP & PC */
-    background-repeat: no-repeat;  /* Mencegah gambar menduplikat/mengulang jika layar terlalu besar */
-    
+    background-color: #121212; /* Warna dasar hitam jika gambar belum dimuat */
     color: #e0e0e0;
     line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* --- TRIK KHUSUS BACKGROUND 1:1 UTK HP & PC --- */
+body::before {
+    content: "";
+    position: fixed; /* Mengunci gambar agar tidak ikut ke-scroll */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Memastikan pas di tengah-tengah layar */
+    
+    /* Atur ukuran logo kotak di sini */
+    width: 90vw;  /* Di HP, lebar logo akan memakan 90% lebar layar */
+    height: 90vw; /* Dikunci sama dengan lebar agar rasionya 1:1 kotak sempurna */
+    max-width: 500px;  /* Di PC, ukuran logo maksimal 500px saja agar tidak kebesaran */
+    max-height: 500px; /* Dikunci sama agar di PC tetap 1:1 */
+    
+    /* Panggil file gambar logo Pagar Nusa kamu */
+    background-image: url('PNLOSS.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Mengatur transparansi logo (0.12 artinya kegelapan 88%, teks kamu dijamin sangat terbaca) */
+    opacity: 0.12; 
+    
+    z-index: -1; /* Menaruh gambar di paling belakang agar tidak menutupi teks */
+    pointer-events: none; /* Supaya gambar tidak bisa diklik/mengganggu tombol */
 }
 
 /* --- TRICK KHUSUS: Efek Fixed Hanya Berjalan di PC/Laptop --- */

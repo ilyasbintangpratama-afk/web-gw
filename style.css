@@ -242,49 +242,57 @@ p {
 }
 
 /* --- RESPONSIVE UNTUK LAYAR HP (DIBAWAH 768px) --- */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px 10px;
-    }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* Membuat Logo di atas, Menu di bawah */
+                justify-content: center;
+                align-items: center;
+                gap: 15px; /* Memberi jarak yang aman antara logo dan tombol menu */
+                padding: 15px 10px;
+            }
 
-    .nav-links {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2px;
-    }
+            .logo {
+                display: block;
+                font-size: 24px; /* Sedikit diperbesar agar jelas di HP */
+                text-align: center;
+                width: 100%;
+                margin-bottom: 5px; /* Jarak bawah logo agar tidak nempel ke menu */
+            }
 
-    .nav-links li a {
-        padding: 6px 10px;
-        font-size: 13px;
-    }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap; /* Jika menu tidak muat, otomatis turun rapi ke baris baru */
+                gap: 5px;
+            }
 
-    section {
-        padding: 140px 15px 60px 15px;
-        min-height: auto;
-    }
+            .nav-links li a {
+                padding: 6px 10px;
+                font-size: 13px; /* Ukuran teks menu pas untuk layar HP */
+            }
 
-    h1 {
-        font-size: 1.8rem;
-    }
+            section {
+                /* Ditambah menjadi 180px agar konten atas (Home) tidak tertutup taskbar HP yang meninggi */
+                padding: 180px 15px 60px 15px; 
+                min-height: auto;
+            }
 
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        margin-top: 20px;
-    }
+            /* ... kode lainnya seperti .gallery-grid dan .social-buttons biarkan tetap di bawahnya ... */
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                margin-top: 20px;
+            }
 
-    .social-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
+            .social-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
 
-    .btn-sosmed {
-        justify-content: center;
-    }
-}
+            .btn-sosmed {
+                justify-content: center;
+            }
+        }
 
 /* ==========================================================================
    ANIMASI BARU (FADE IN UP & SMOOTH GLOW)
@@ -322,4 +330,87 @@ p {
 .gallery-item:hover {
     transform: translateY(-5px) scale(1.02) !important;
     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2) !important;
+}
+
+/* ==========================================================================
+   EFEK VISUAL AGAR WEB RAME & INTERAKTIF
+   ========================================================================== */
+
+/* 1. Kontainer untuk partikel bintang melayang */
+#particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Supaya tidak mengganggu klik tombol */
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(37, 211, 102, 0.6); /* Warna hijau Pagar Nusa transparan */
+    border-radius: 50%;
+    animation: melayang Linier infinite;
+}
+
+@keyframes melayang {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* 2. Efek Garis Menyala Hijau Bergerak di Tepi Card */
+.card {
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.2), transparent);
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+/* 3. Animasi Kursor Berdenyut pada Tombol Sosmed */
+.btn-sosmed {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sosmed::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-sosmed:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }

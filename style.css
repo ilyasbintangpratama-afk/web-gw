@@ -8,9 +8,39 @@
 }
 
 body {
-    background-color: #121212;
+    /* 1. Pastikan nama file di bawah ini sesuai dengan nama foto logo Pagar Nusa di foldermu (misal: 'pagarnusa.jpeg') */
+    background-image: linear-gradient(rgba(18, 18, 18, 0.88), rgba(18, 18, 18, 0.92)), url('PNLOSS.jpg');
+    
+    /* 2. Mengunci posisi background agar tidak ikut bergeser saat di-scroll */
+    background-attachment: fixed;
+    
+    /* 3. Pengaturan agar gambar pas di layar HP dan PC */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
     color: #e0e0e0;
     line-height: 1.6;
+    
+    /* 4. Menambahkan efek blur halus pada seluruh background */
+    filter: none; 
+}
+
+/* --- EFEK BLUR KHUSUS SECTIONS --- */
+/* Karena efek filter blur langsung di body bisa membuat teks ikut blur, 
+   cara terbaik adalah memberikan efek blur transparan pada pembungkus kontennya */
+section {
+    padding: 120px 20px 80px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Membuat latar belakang di belakang teks sedikit blur (efek kaca frosted glass) */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 /* --- NAVIGATION BAR (TASKBAR) --- */

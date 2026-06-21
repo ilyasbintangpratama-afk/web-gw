@@ -359,37 +359,48 @@ p {
 }
 
 /* ==========================================================================
-   EFEK VISUAL AGAR WEB RAME & INTERAKTIF
+   EFEK LOGO 1:1 MELAYANG-LAYANG DI BACKGROUND
    ========================================================================== */
 
-/* 1. Kontainer untuk partikel bintang melayang */
+/* Kontainer utama partikel tetap mengunci layar */
 #particle-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Supaya tidak mengganggu klik tombol */
-    z-index: 1;
+    pointer-events: none;
+    z-index: 1; /* Di belakang teks, di depan background utama */
+    overflow: hidden;
 }
 
+/* Mengubah partikel menjadi kotak 1:1 dan memasukkan gambar */
 .particle {
     position: absolute;
-    background: rgba(37, 211, 102, 0.6); /* Warna hijau Pagar Nusa transparan */
-    border-radius: 50%;
-    animation: melayang Linier infinite;
+    aspect-ratio: 1 / 1; /* Memastikan rasionya selalu kotak 1:1 */
+    background-image: url('pagarnusa.jpeg'); /* Samakan dengan nama file logo Pagar Nusa milikmu */
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px; /* Sudut agak melengkung biar estetik */
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.3)); /* Efek glow hijau tipis pada logo */
+    animation: logoMelayang linear infinite;
 }
 
-@keyframes melayang {
+/* Jalur animasi gerakan melayang dari bawah ke atas sambil berputar halus */
+@keyframes logoMelayang {
     0% {
-        transform: translateY(100vh) scale(0);
+        transform: translateY(110vh) translateX(0) rotate(0deg);
         opacity: 0;
     }
-    50% {
-        opacity: 1;
+    10% {
+        opacity: 0.25; /* Transparansi logo saat melayang agar teks tetap terbaca */
+    }
+    90% {
+        opacity: 0.25;
     }
     100% {
-        transform: translateY(-10vh) scale(1);
+        transform: translateY(-15vh) translateX(50px) rotate(360deg);
         opacity: 0;
     }
 }

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pengenalan Diri - Dark Mode</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION BAR (TASKBAR) --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #222;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            color: #00adb5;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-links li a {
+            color: #aaaaaa;
+            text-decoration: none;
+            padding: 8px 13px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links li a:hover {
+            color: #00adb5;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        /* --- EFEK TULISAN WARNA-WARNI BERGERAK --- */
+        .nama-warni {
+            background: linear-gradient(45deg, #ff007f, #00ffff, #ff00ff, #00ffaa);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animasiWarna 4s ease infinite;
+            font-weight: bold;
+        }
+
+        @keyframes animasiWarna {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- LAYOUT SATU HALAMAN FULL (SECTIONS) --- */
+        section {
+            padding: 120px 20px 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content-box {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        h2 {
+            color: #00adb5;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #b0b0b0;
+        }
+
+        /* --- SOSIAL MEDIA & KONTAK --- */
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-sosmed {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-sosmed:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-wa { 
+            background-color: #25D366; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-ig { 
+            background-color: #E1306C; 
+            box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+        }
+        .btn-sosmed i { margin-right: 10px; font-size: 20px; }
+
+        /* --- GRID & CARDS --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .card {
+            background: #1e1e1e;
+            padding: 25px;
+            border-top: 4px solid #00adb5;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            color: #e0e0e0;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #aaaaaa;
+        }
+
+        /* --- GALERI (UNTUK PC - JADI 3 KOLOM) --- */
+        .gallery-grid {
+            display: grid;
+            /* Diubah ke 200px agar muat 3 kolom menyamping di PC */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- RESPONSIVE UNTUK LAYAR HP (DIBAWAH 768px) --- */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* Membuat Logo dan Menu bertumpuk atas-bawah */
+                gap: 12px;
+                padding: 12px 10px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap; /* Supaya menu otomatis turun rapi jika layar HP terlalu kecil */
+                gap: 2px;
+            }
+
+            .nav-links li a {
+                padding: 6px 10px;
+                font-size: 13px; /* Ukuran teks menu disesuaikan untuk HP */
+            }
+
+            section {
+                padding: 140px 15px 60px 15px; /* Kompensasi tinggi taskbar di HP */
+                min-height: auto;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+           /* Memastikan di HP tetap mengunci susunan 3 kolom berjajar */
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px; /* Memperkecil jarak antar foto di HP agar hemat ruang */
+                margin-top: 20px;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-sosmed {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo">MyPortfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#proyek">Proyek</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="content-box">
+            <h1>Halo, Saya <span class="nama-warni">Ilyas</span></h1>
+            <p>Selamat datang di ruang digital saya. Saya seorang pelajar yang menjadi web developer pemula yang senang berkreasi.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="content-box">
+            <h1>Tentang Saya</h1>
+            <p>Nama lengkap saya adalah <span class="nama-warni">Ilyas Bintang Pratama</span>. Lelah itu wajar, menyerah adalah pilihan. Orang kuat memilih bangkit daripada mengeluh.</p>
+            <p>Jangan menjelaskan dirimu kepada siapa pun. Mereka yang menyukaimu tidak butuh itu, dan mereka yang membencimu tidak akan percaya itu.</p>
+        </div>
+    </section>
+
+    <section id="pendidikan">
+        <div class="content-box">
+            <h1>Riwayat Pendidikan</h1>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>SMPN 2 Gurah</h3>
+                    <p><strong>Jurusan:</strong> Teknik Komputer $ Telekomunikasi<br>Tahun: 2024 - Sekarang</p>
+                </div>
+                <div class="card">
+                    <h3>SMPN 2 Gurah</h3>
+                    <p><strong>Pengalaman:</strong> Menjadi Ketua Kelas<br>Tahun: 2021 - 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keahlian">
+        <div class="content-box">
+            <h1>Keahlian</h1>
+            <div class="grid-3">
+                <div class="card" style="border-top-color: #e34c26;">
+                    <h3>Di Rumah</h3>
+                    <p>Bisa Membuat Masakan</p>
+                </div>
+                <div class="card" style="border-top-color: #f1e05a;">
+                    <h3>Di Sekolah</h3>
+                    <p>Punya keahlian di bidang Komputer, Jaringan, dan Pemrograman</p>
+                </div>
+                <div class="card" style="border-top-color: #007acc;">
+                    <h3>Di Luar</h3>
+                    <p>Saya ikut silat PN LOSS, dan Public Speaking Saya Lumayan Bagus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyek">
+        <div class="content-box">
+            <h1>Proyek Saya</h1>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Menjadi Lebih Baik</h3>
+                    <p>Setiap orang memiliki timeline hidupnya masing-masing. Tidak sama, bukan berarti gagal.</p>
+                </div>
+                <div class="card">
+                    <h3>Menjadi Sukses</h3>
+                    <p>Bukan gelar atau harta yang membuat seseorang dihargai, melainkan adab dan kedewasaan dalam bertindak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri">
+        <div class="content-box">
+            <h1>Galeri</h1>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="ILY1.jpeg" alt="Mengajar Ekstra Anak SD/MI"></div>
+                <div class="gallery-item"><img src="ILY2.jpeg" alt="Kekeluargaan Di Silat"></div>
+                <div class="gallery-item"><img src="ILY3.jpeg" alt="Bersantai Dengan Kalcer"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <div class="content-box">
+            <h1>Hubungi Saya</h1>
+            <p>Silakan hubungi saya secara langsung untuk berkolaborasi atau sekadar bertukar pikiran via media sosial:</p>
+            
+            <div class="social-buttons">
+                <a href="https://wa.me/6281999199987?text=Halo%20saya%20melihat%20website%20Anda" target="_blank" class="btn-sosmed btn-wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                
+                <a href="https://instagram.com/ilyass.jafar" target="_blank" class="btn-sosmed btn-ig">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

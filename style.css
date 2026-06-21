@@ -294,6 +294,30 @@ p {
             .btn-sosmed {
                 justify-content: center;
             }
+
+            /* --- EFEK KHUSUS LAYAR SENTUH HP --- */
+            
+            /* 1. Efek ketika kartu ditekan/di-tap jari (Active State) */
+            .card:active, .gallery-item:active, .btn-sosmed:active {
+                transform: scale(0.95) !important; /* Kartu agak mengecil saat ditekan */
+                box-shadow: 0 2px 10px rgba(37, 211, 102, 0.4) !important;
+                transition: transform 0.1s ease !important;
+            }
+
+            /* 2. Mematikan efek hover bawaan PC agar tidak bug di HP */
+            .card:hover, .gallery-item:hover {
+                transform: none;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            }
+
+            /* 3. Membuat scroll bar di HP terlihat lebih tipis dan estetik hijau */
+            ::-webkit-scrollbar {
+                width: 4px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #25D366;
+                border-radius: 10px;
+            }
         }
 
 /* ==========================================================================
